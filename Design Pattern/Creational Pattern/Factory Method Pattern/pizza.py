@@ -6,6 +6,8 @@
 # 我们在PizzaStore中定义一个抽象接口（create_pizza）作为抽象的工厂，
 # 而order_pizza是它的客户；将Pizza对象的创建放到PizzaStore子类去解决。
 
+# http://blog.csdn.net/ericzhong83/article/details/7604728
+
 class Pizza:
     name = ""
     dough = ""
