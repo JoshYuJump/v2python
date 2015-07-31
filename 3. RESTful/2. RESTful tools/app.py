@@ -16,8 +16,9 @@ def get_token(uid):
     users[uid].append(token)
     return token
 
-def verify_token():
-    pass
+def verify_token(token):
+    _token = base64.b64decode(token)
+    
 
 @app.route('/index')
 def index():
