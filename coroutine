@@ -1,0 +1,30 @@
+#!/usr/bin/evn python
+# -*- coding:utf-8 -*-
+import time
+# 生产者
+def produce(l):
+    i = 0
+    while True:
+        i += 1
+        l.append(i)
+        time.sleep(2)
+        # 暂时跳出当前方法
+        yield i
+        # 消费者 send 了以后，就又回到了这里继续执行
+        pass
+ 
+# 消费者
+def consume(l):
+    p = produce(l)
+    while True:
+        try:
+            # 获取生产者的执行
+            i = p.next()
+            # 这里完全是为了匹配伪代码而写，实际上这个 list 在这种情况下，即不会多于一个 item，也不会为空
+            while len(l) > 0:
+                print l.pop()
+        except:
+            # 生产者提供的所有的执行都处理完了，通过 send 返回生产者跳出的地方
+            p.send(None)
+l = []
+consume(l)
